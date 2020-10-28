@@ -17,6 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('restrito')->group(function () {
+    
+    Route::namespace('Restrito')->name('restrito.')->group(function () {
+        Route::resource('smartphones', 'SmartphoneController');
+        Route::resource('sampletss', 'SampletssController');
+        Route::resource('observations', 'ObsController');
+        Route::resource('avgsleepmode', 'AvgController');
+    });
+
+}); 

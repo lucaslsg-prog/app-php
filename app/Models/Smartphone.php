@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +28,7 @@ class Smartphone extends Model
 
     public function observation()
     {
-        return $this->belongsTo(observation::class);
+        return $this->belongsTo(Observation::class);
     }
 
 }
