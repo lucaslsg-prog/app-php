@@ -17,7 +17,8 @@ class CreateTssSamplesTable extends Migration
             $table->id();
             $table->string('model');
             $table->string('name');
-            $table->string('imei');
+            $table->decimal('imei',10);
+            $table->boolean('tss')->default(false);
             $table->string('sn');
             $table->timestamps();
             

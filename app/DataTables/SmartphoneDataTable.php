@@ -63,13 +63,13 @@ class SmartphoneDataTable extends DataTable
                     ->buttons(
                         Button::make('create')
                             ->addClass('btn btn-primary')
-                            ->text('<i class="fas fa-plus-circle"></i> Cadastrar Novo'),
+                            ->text('<i class="fas fa-plus-circle"></i> Create new'),
                         Button::make('export')
                             ->addClass('btn btn-primary')
-                            ->text('<i class="fas fa-download"></i> Exportar'),
+                            ->text('<i class="fas fa-download"></i> Export'),
                         Button::make('print')
                             ->addClass('btn btn-primary')
-                            ->text('<i class="fas fa-print"></i> Imprimir')
+                            ->text('<i class="fas fa-print"></i> Print')
                     );
     }
 
@@ -88,11 +88,12 @@ class SmartphoneDataTable extends DataTable
                   ->addClass('text-center')
                   ->title('Actions'),
             Column::make('model')->name('tss_samples.model'),
-            Column::make('imei'),
+            Column::make('imei')->name('tss_samples.imei'),
+            Column::make('tss')->name('tss_samples.tss'),
             Column::make('remarks')->text('observations.remarks'),
+            Column::make('average_current')->decimal('avg_sleep_mode.average_current'),
             Column::make('esim'),
-            Column::make('power_of_lock'),
-            Column::make('average_current')->decimal('avg_sleep_mode.average_current')
+            Column::make('power_of_lock')
         ];
     }
 
