@@ -13,7 +13,7 @@ class AvgRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class AvgRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'avg_sleep_mode' => 'required',
+            'sample_type' => 'required',
+            'measuring_form' => 'required',
+            'hw_version' => 'required'
         ];
     }
 }

@@ -13,7 +13,7 @@ class ObsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class ObsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'best_hw' => 'required',
+            'cable_type' => 'required',
+            'hw_for_radio_test' => 'required',
+            'remarks' => 'required'
         ];
     }
 }

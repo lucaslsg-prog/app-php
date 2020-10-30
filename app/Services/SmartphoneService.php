@@ -28,16 +28,16 @@ class SmartphoneService
         }
     }
 
-    public static function listaProdutos($request)
+    public static function SmartphoneList($request)
     {
         if (isset($request['searchTerm'])) {
-            return Smartphone::select('id', 'descricao as text')
-                        ->where('descricao', 'like', '%' . $request['searchTerm'] . '%')
+            return Smartphone::select('id', 'name as text')
+                        ->where('name', 'like', '%' . $request['searchTerm'] . '%')
                         ->limit(10)
                         ->get();
         }
 
-        return Smartphone::select('id', 'descricao as text')
+        return Smartphone::select('id', 'observations as text')
                     ->limit(10)
                     ->get();
     }

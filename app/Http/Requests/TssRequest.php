@@ -13,7 +13,7 @@ class TssRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class TssRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'model' => 'required',
+            'name' => 'required',
+            'imei' => 'required',
+            'sn' => 'required'
+
         ];
     }
 }

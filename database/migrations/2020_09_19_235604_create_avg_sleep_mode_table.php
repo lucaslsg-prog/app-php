@@ -18,6 +18,8 @@ class CreateAvgSleepModeTable extends Migration
             $table->string('sample_type');
             $table->string('measuring_form');
             $table->string('hw_version');
+            $table->decimal('average_current', 10, 2);
+            $table->timestamps();
         });
     }
 

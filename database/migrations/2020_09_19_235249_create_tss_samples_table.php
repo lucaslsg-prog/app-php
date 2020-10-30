@@ -19,6 +19,7 @@ class CreateTssSamplesTable extends Migration
             $table->string('name');
             $table->string('imei');
             $table->string('sn');
+            $table->timestamps();
             
         });
     }

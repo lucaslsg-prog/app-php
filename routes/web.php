@@ -27,9 +27,12 @@ Route::prefix('restrito')->group(function () {
     
     Route::namespace('Restrito')->name('restrito.')->group(function () {
         Route::resource('smartphones', 'SmartphoneController');
-        Route::resource('sampletss', 'SampletssController');
-        Route::resource('observations', 'ObsController');
-        Route::resource('avgsleepmode', 'AvgController');
+        Route::get('index', 'SmartphoneController@index')->name('restrito.smartphones');
+        
+        // Route::resource('sampletss', 'SampletssController');
+        // Route::resource('observations', 'ObsController');
+        // Route::resource('avgsleepmode', 'AvgController');
+        
     });
 
 }); 

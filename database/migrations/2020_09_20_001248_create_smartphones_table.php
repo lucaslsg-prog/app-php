@@ -26,6 +26,7 @@ class CreateSmartphonesTable extends Migration
             
             $table->boolean('esim')->default(false);
             $table->boolean('power_of_lock')->default(true);
+            $table->timestamps();
         
         });
     }

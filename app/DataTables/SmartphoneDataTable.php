@@ -23,11 +23,17 @@ class SmartphoneDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addColumn('action', function ($s) {
-                $actions = link_to(route('smartphones.edit', $s),'Edite', ['class' => 'btn btn-sm btn-primary mr-1']);
-                $actions .= FormFacade::button('Excluir', ['class' => 'btn btn-sm btn-danger', 'onclick' => "excluir('" . route('smatphones.destroy', $s) . "')"]);
-
-                return $actions;
+                return view('restrito.datatable.acoes_padrao', [
+                    'editar' => route('restrito.smartphones.edit', $s),
+                    'excluir' => route('restrito.smartphones.destroy', $s)
+                ]);
             });
+            // ->addColumn('action', function ($s) {
+            //     $acoes = link_to(route('restrito.smartphones.edit', $s),'Edite', ['class' => 'btn btn-sm btn-primary mr-1']);
+            //     $acoes .= FormFacade::button('Excluir', ['class' => 'btn btn-sm btn-danger', 'onclick' => "excluir('" . route('restrito.smatphones.destroy', $s) . "')"]);
+
+            //     return $acoes;
+            // });
     }
 
     /**
@@ -36,9 +42,9 @@ class SmartphoneDataTable extends DataTable
      * @param \App\Smartphone $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Smartphone $model)
+    public function query(Smartphone $smartphone)
     {
-        return $model->newQuery();
+        return $smartphone->newQuery();
     }
 
     /**
@@ -79,11 +85,14 @@ class SmartphoneDataTable extends DataTable
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
-                  ->addClass('text-center'),
-            Column::make('Actions'),
+                  ->addClass('text-center')
+                  ->title('Actions'),
+            Column::make('model')->name('tss_samples.model'),
+            Column::make('imei'),
+            Column::make('remarks')->text('observations.remarks'),
             Column::make('esim'),
-            Column::make('remarks')->name('observations.remarks'),
-            Column::make('name')->name('tss_samples.name')
+            Column::make('power_of_lock'),
+            Column::make('average_current')->decimal('avg_sleep_mode.average_current')
         ];
     }
 

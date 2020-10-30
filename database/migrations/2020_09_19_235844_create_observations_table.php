@@ -19,6 +19,7 @@ class CreateObservationsTable extends Migration
             $table->string('cable_type');
             $table->string('hw_for_radio_test');
             $table->text('remarks')->nullable();
+            $table->timestamps();
         });
     }
 
