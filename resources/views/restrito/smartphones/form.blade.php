@@ -47,7 +47,10 @@
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
+            </div>
 
+
+            <div class="card-body row">
                 <div class="form-group">
                     {!! Form::label('avg_sleep_mode_id', 'Average Current') !!}
                     <div class="col-sm-12">
@@ -73,7 +76,7 @@
             <div class="card-body row">
                 <div class="form-group">
                     {!! Form::label('esim', 'e-SIM') !!}
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         {!! Form::text('esim', null, ['class' => 'form-control']) !!}
                     </div>
                     @error('esim')
@@ -83,7 +86,7 @@
 
                 <div class="form-group">
                     {!! Form::label('power_of_lock', 'Power of Lock') !!}
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         {!! Form::text('power_of_lock', null, ['class' => 'form-control']) !!}
                     </div>
                     @error('power_of_lock')
