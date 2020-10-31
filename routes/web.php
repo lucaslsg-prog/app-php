@@ -28,6 +28,9 @@ Route::prefix('restrito')->group(function () {
     Route::namespace('Restrito')->name('restrito.')->group(function () {
         Route::resource('smartphones', 'SmartphoneController');
         Route::get('index', 'SmartphoneController@index')->name('restrito.smartphones');
+        Route::get('store', 'SmartphoneController@store')->name('restrito.smartphones');
+        Route::get('update', 'SmartphoneController@update')->name('restrito.smartphones');
+        Route::get('destroy', 'SmartphoneController@destroy')->name('restrito.smartphones');
         
         // Route::resource('sampletss', 'SampletssController');
         // Route::resource('observations', 'ObsController');

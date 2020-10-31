@@ -3,7 +3,7 @@
 @section('title', 'Registered Smartphones')
 
 @section('content_header')
-    <h1>Celulares</h1>
+    <h1>Registered Smartphones</h1>
 @stop
 
 @section('content')

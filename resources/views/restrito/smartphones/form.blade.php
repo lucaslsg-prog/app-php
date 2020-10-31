@@ -27,10 +27,12 @@
         @else
             {!! Form::open(['url' => route('restrito.smartphones.store')]) !!}
         @endif
-            <div class="card-body">
+            <div class="card-body row">
                 <div class="form-group">
                     {!! Form::label('tss_sample_id', 'Model') !!}
-                    {!! Form::text('tss_sample_id', $model, null, ['class' => 'form-control']) !!}
+                    <div class="col-sm-12">
+                        {!! Form::text('tss_sample_id', $model ?? '', null, ['class' => 'form-control']) !!}
+                    </div>
                     @error('tss_sample_id')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
@@ -38,39 +40,42 @@
 
                 <div class="form-group">
                     {!! Form::label('tss_sample_id', 'IMEI') !!}
-                    {!! Form::number('tss_sample_id', $imei, null, ['class' => 'form-control']) !!}
+                    <div class="col-sm-12">
+                        {!! Form::text('tss_sample_id', $imei ?? '', null, ['class' => 'form-control']) !!}
+                    </div>
                     @error('tss_sample_id')
-                        <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('tss_sample_id', 'TSS') !!}
-                    {!! Form::boolean('tss_sample_id', $tss, null, ['class' => 'form-control']) !!}
-                    @error('tss_sample_id')
-                        <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('observation_id', 'Remark') !!}
-                    {!! Form::textarea('observation_id', $remark, null, ['class' => 'form-control', 'rows' => 2]) !!}
-                    @error('observation_id')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('avg_sleep_mode_id', 'Average Current') !!}
-                    {!! Form::number('avg_sleep_mode_id', $average_current, null, ['class' => 'form-control]) !!}
+                    <div class="col-sm-12">
+                        {!! Form::number('avg_sleep_mode_id', $average_current ?? '', null, ['class' => 'form-control']) !!}
+                    </div>
                     @error('avg_sleep_mode_id')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="form-group">
+                    {!! Form::label('tss_sample_id', 'TSS') !!}
+                    <div class="col-sm-12">
+                        {!! Form::text('tss_sample_id', $tss ?? '', null, ['class' => 'form-control']) !!}
+                    </div>
+                    @error('tss_sample_id')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+            </div>
+
+            <div class="card-body row">
+                <div class="form-group">
                     {!! Form::label('esim', 'e-SIM') !!}
-                    {!! Form::boolean('esim', null, ['class' => 'form-control']) !!}
+                    <div class="col-sm-6">
+                        {!! Form::text('esim', null, ['class' => 'form-control']) !!}
+                    </div>
                     @error('esim')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
@@ -78,12 +83,25 @@
 
                 <div class="form-group">
                     {!! Form::label('power_of_lock', 'Power of Lock') !!}
-                    {!! Form::boolean('power_of_lock', null, ['class' => 'form-control']) !!}
+                    <div class="col-sm-6">
+                        {!! Form::text('power_of_lock', null, ['class' => 'form-control']) !!}
+                    </div>
                     @error('power_of_lock')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-                
+            </div>
+
+            <div class="card-body row">
+                <div class="form-group">
+                    {!! Form::label('observation_id', 'Remark') !!}
+                    <div class="col-sm-12">
+                        {!! Form::textarea('observation_id', $remark ?? '', null, ['class' => 'form-control', 'rows' => 2]) !!}
+                    </div>
+                    @error('observation_id')
+                        <small class="form-text text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
             </div>
 
             <div class="card-footer">

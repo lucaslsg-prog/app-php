@@ -18,17 +18,17 @@ class Smartphone extends Model
 
     public function tsssample()
     {
-        return $this->belongsTo(Tsssample::class);
+        return $this->belongsToMany(Tsssample::class);
     }
 
     public function avgsleepmode()
     {
-        return $this->belongsTo(Avgsleepmode::class);
+        return $this->belongsToMany(Avgsleepmode::class);
     }
 
     public function observation()
     {
-        return $this->belongsTo(Observation::class);
+        return $this->belongsToMay(Observation::class);
     }
 
 }
