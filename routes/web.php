@@ -27,14 +27,14 @@ Route::prefix('restrito')->group(function () {
     
     Route::namespace('Restrito')->name('restrito.')->group(function () {
         Route::resource('smartphones', 'SmartphoneController');
-        Route::get('index', 'SmartphoneController@index')->name('restrito.smartphones');
-        Route::get('store', 'SmartphoneController@store')->name('restrito.smartphones');
-        Route::get('update', 'SmartphoneController@update')->name('restrito.smartphones');
-        Route::get('destroy', 'SmartphoneController@destroy')->name('restrito.smartphones');
+        Route::resource('tsssamples', 'SampletssController');
+
+        // Route::get('index', 'SmartphoneController@index')->name('restrito.smartphones');
+        // Route::post('store', 'SmartphoneController@store')->name('restrito.smartphones');
+        // Route::put('update', 'SmartphoneController@update')->name('restrito.smartphones');
+        // Route::delete('destroy', 'SmartphoneController@destroy')->name('restrito.smartphones');
         
-        // Route::resource('sampletss', 'SampletssController');
-        // Route::resource('observations', 'ObsController');
-        // Route::resource('avgsleepmode', 'AvgController');
+        Route::get('lista-tss-samples','SampletssController@listaTssSample')->name('lista.tss-samples');
         
     });
 

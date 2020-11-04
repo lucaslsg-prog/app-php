@@ -19,7 +19,6 @@
 
 
 @section('content')
-    @include('flash::message')
 
     <div class="card card-primary">
         @if (isset($smartphone))
@@ -27,17 +26,32 @@
         @else
             {!! Form::open(['url' => route('restrito.smartphones.store')]) !!}
         @endif
-            <div class="card-body row">
-                <div class="form-group">
-                    {!! Form::label('tss_sample_id', 'Model') !!}
-                    <div class="col-sm-12">
-                        {!! Form::text('tss_sample_id', $model ?? '', null, ['class' => 'form-control']) !!}
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-3">
+                        {!! Form::label('tss_sample_id', 'Model') !!}
+                        {!! Form::select('tss_sample_id', [] , null, ['class' => 'form-control','id' => 'tss_sample_id']) !!}
+                        @error('tss_sample_id')
+                            <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
-                    @error('tss_sample_id')
-                        <small class="form-text text-danger">{{ $message }}</small>
-                    @enderror
-                </div>
 
+                    <div class="form-group col-3">
+                        {!! Form::label('tss_name', 'Name') !!}
+                        {!! Form::text('tss_name', null, ['class' => 'form-control','readonly']) !!}
+                    </div>
+
+                    <div class="form-group col-3">
+                        {!! Form::label('tss_sn', 'SN') !!}
+                        {!! Form::text('tss_sn', null, ['class' => 'form-control','readonly']) !!}
+                    </div>
+
+                    <div class="form-group col-3">
+                        {!! Form::label('tss_imei', 'IMEI') !!}
+                        {!! Form::text('tss_imei', null, ['class' => 'form-control','readonly']) !!}
+                    </div>
+                </div>
+            {{--
                 <div class="form-group">
                     {!! Form::label('tss_sample_id', 'IMEI') !!}
                     <div class="col-sm-12">
@@ -64,7 +78,7 @@
                 <div class="form-group">
                     {!! Form::label('tss_sample_id', 'TSS') !!}
                     <div class="col-sm-12">
-                        {!! Form::text('tss_sample_id', $tss ?? '', null, ['class' => 'form-control']) !!}
+                        {!! Form::select('tss_sample_id', [] ,null, ['class' => 'form-control','id' => 'tss_sample_id']) !!}
                     </div>
                     @error('tss_sample_id')
                         <small class="form-text text-danger">{{ $message }}</small>
@@ -107,10 +121,50 @@
                 </div>
             </div>
 
+            --}}
+    </div>
             <div class="card-footer">
                 {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
                 {!! link_to_route('restrito.smartphones.index', 'Voltar', null, ['class' => 'btn btn-secondary']) !!}
             </div>
         {!! Form::close() !!}
     </div>
+@stop
+
+@section('js')
+
+<script>
+        
+        $('#tss_sample_id').select2({
+            placeholder: 'TSS Samples',
+            ajax: {
+                url: '{{ route('restrito.lista.tss-samples') }}',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        searchTerm: params.term
+                    };
+                },
+                processResults: function (response) {
+                    return {
+                        results: response
+                    };
+                },
+            }
+        });
+
+        $('#tss_sample_id').on('change', function () {
+            //alert($(this).text())
+            axios.get('/restrito/tsssamples/' + $(this).val())
+                .then((res)=>{
+                    $("#tss_name").val(res.data.name);
+                    $("#tss_sn").val(res.data.sn);
+                    $("#tss_imei").val(res.data.imei);
+                })
+                .catch((err)=>{
+
+                })
+        })
+    </script>
+
 @stop

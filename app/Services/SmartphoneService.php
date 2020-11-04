@@ -28,6 +28,17 @@ class SmartphoneService
         }
     }
 
+    public static function destroy($smartphone)
+    {
+        try {
+            $smartphone->smartphones()->detach();
+            return $smartphone->delete();
+        } catch (Throwable $th) {
+            Log::error($th->getMessage());
+            return null;
+        }
+    }
+
     public static function SmartphoneList($request)
     {
         if (isset($request['searchTerm'])) {
